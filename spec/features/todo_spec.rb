@@ -14,4 +14,9 @@ feature "The homepage" do
     visit "/"
     expect(page).to have_content("Created by Matt De Leon")
   end
+
+  scenario "should contain title" do
+    visit "/"
+    expect(page).to have_content("todos")
+  end
 end

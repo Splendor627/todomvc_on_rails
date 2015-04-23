@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 feature "Todos" do
-  scenario "that are incomplet are marked as such" do
+  scenario "that are incomplete are marked as such" do
     create(:todo, title: "buy milk & eggs", completed: false)
 
     visit "/"

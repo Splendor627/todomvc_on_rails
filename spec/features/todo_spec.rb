@@ -3,16 +3,18 @@ require 'rails_helper'
 feature "The homepage" do
   background do
     create(:todo, title: "buy milk & eggs")
+    create(:todo, title: "broccoli")
   end
 
   scenario "should show my Todos" do
     visit "/"
-    expect(page).to have_content("buy milk & eggs")
+    expect(page).to have_selector("li label", text: "buy milk & eggs")
+    expect(page).to have_selector("li label", text: "broccoli")
   end
 
-  scenario "should credit the author" do
+  scenario "should show items remaining" do
     visit "/"
-    expect(page).to have_content("Created by Matt De Leon")
+    page.has_css?("todo-count", text: " item left")
   end
 
   scenario "should contain edit instructions" do
